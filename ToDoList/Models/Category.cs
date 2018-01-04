@@ -1,16 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ToDoList.Models
 {
-    public class Category
-    {
-        public void Configure(IApplicationBuilder app)
-        {
-            // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-        }
-    }
+	[Table("Categories")]
+	public class Category
+	{
+		public Category()
+		{
+			this.Items = new HashSet<Item>();
+		}
+
+		[Key]
+		public int CategoryId { get; set; }
+		public string Name { get; set; }
+		public virtual ICollection<Item> Items { get; set; }
+	}
 }
