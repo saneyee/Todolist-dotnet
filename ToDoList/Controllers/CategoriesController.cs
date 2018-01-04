@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ToDoList.Models;
+using System.Collections.Generic;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ToDoList.Controllers
 {
@@ -12,9 +12,49 @@ namespace ToDoList.Controllers
     {
         private ToDoListContext db = new ToDoListContext();
 
-		public IActionResult Index()
+        public IActionResult Index()
+        {
+            return View(db.Categories.ToList());
+        }
+
+
+        public IActionResult Details(int id)
+        {
+            var thisCategory = db.Categories.FirstOrDefault(categories => categories.CategoryId == id);
+            return View(thisCategory);
+        }
+
+		public IActionResult Create()
 		{
-			return View(db.Categories.ToList());
+			ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name");
+			return View();
 		}
+
+		[HttpPost]
+		public IActionResult Create(Category category)
+		{
+			db.Categories.Add(category);
+			db.SaveChanges();
+			return RedirectToAction("Index");
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
+
 }
