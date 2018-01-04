@@ -38,22 +38,34 @@ namespace ToDoList.Controllers
 			return RedirectToAction("Index");
 		}
 
+		public IActionResult Edit(int id)
+		{
+			var thisCategory = db.Categories.FirstOrDefault(categories => categories.CategoryId == id);
+			ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "Name");
+			return View(thisCategory);
+		}
 
+		[HttpPost]
+		public IActionResult Edit(Category category)
+		{
+			db.Entry(category).State = EntityState.Modified;
+			db.SaveChanges();
+			return RedirectToAction("Index");
+		}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		public ActionResult Delete(int id)
+		{
+			var thisCategory = db.Categories.FirstOrDefault(categories => categories.CategoryId == id);
+			return View(thisCategory);
+		}
+		[HttpPost, ActionName("Delete")]
+		public IActionResult DeleteConfirmed(int id)
+		{
+			var thisCategory = db.Categories.FirstOrDefault(categories => categories.CategoryId == id);
+			db.Categories.Remove(thisCategory);
+			db.SaveChanges();
+			return RedirectToAction("Index");
+		}
 
     }
 
