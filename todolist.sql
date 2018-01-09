@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jan 04, 2018 at 10:32 PM
+-- Generation Time: Jan 10, 2018 at 12:54 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.0.15
 
@@ -63,7 +63,18 @@ INSERT INTO `Items` (`ItemId`, `Description`, `CategoryId`) VALUES
 (3, 'Conquer the internet', 2),
 (5, ' Walk the dog !!!', 2),
 (8, 'Learn C#  today!', 1),
-(9, 'Clean House', 4);
+(9, 'Clean House', 4),
+(10, 'test item', 0),
+(11, 'test item', 0),
+(12, 'test item', 0),
+(13, 'test item', 0),
+(14, 'test item', 0),
+(15, 'test item', 0),
+(16, 'test item', 1),
+(17, 'test item', 1),
+(18, 'test item', 1),
+(19, 'test item', 1),
+(20, 'test item', 1);
 
 --
 -- Indexes for dumped tables
@@ -96,7 +107,7 @@ ALTER TABLE `Categories`
 -- AUTO_INCREMENT for table `Items`
 --
 ALTER TABLE `Items`
-  MODIFY `ItemId` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ItemId` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
